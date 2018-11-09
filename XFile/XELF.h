@@ -9,6 +9,10 @@ using namespace std;
 
 typedef struct {
 	Elf64_Ehdr *header;
+	Elf64_Shdr *sectionHeader;
+	Elf_Byte   *sectionName;
+	Elf64_Phdr *programHeader;
+
 } Elf64;
 typedef struct {
 
@@ -21,12 +25,12 @@ typedef struct {
 class XELF
 {
 private:
-	void *fileCache;
+	Elf_Byte *fileCache;
 
 	void doAnalysis();
 
-	Elf64 *elf64=new Elf64;
-	Elf32 *elf32=new Elf32;
+	Elf64 *elf64;
+	Elf32 *elf32;
 	enum type_ {e64,e32,eunknow}type;
 	
 
@@ -37,6 +41,8 @@ public:
 	~XELF();
 
 	void showHeader();
+	void showSectionList();
+	void showSegmentList();
 
 
 

@@ -51,7 +51,9 @@ int main(int argc, char** argv)
 
 void putHelpELF()
 {
-	cout << "";
+	cout << "h:header\n"
+		"s:section\n"
+		"q:quit";
 }
 void doELF(void * file)
 {
@@ -61,7 +63,7 @@ void doELF(void * file)
 	{
 		cout << ">>";
 		cin >> command;
-		if (command=='h')
+		if (command=='H')
 		{
 			putHelpELF();
 		} 
@@ -69,12 +71,23 @@ void doELF(void * file)
 		{
 			return;
 		}
-		else if(command=='H')
+		else if(command=='h')
 		{
 			elf.showHeader();
 
 		}
-
+		else if (command == 's')
+		{
+			elf.showSectionList();
+		}
+		else if(command=='p')
+		{
+			elf.showSegmentList();
+		}
+		else
+		{
+			putHelpELF();
+		}
 
 
 
