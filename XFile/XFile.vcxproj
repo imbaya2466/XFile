@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{61EAADA4-06CB-4A26-925D-578C044D1FE1}</ProjectGuid>
-    <RootNamespace>XFile</RootNamespace>
+    <ProjectGuid>{BE65DE8A-326F-4BF7-8282-AB0E1C5628D5}</ProjectGuid>
+    <RootNamespace>Xfile</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,6 +115,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="elf.h" />
+    <ClInclude Include="mian.h" />
+    <ClInclude Include="XELF.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="XELF.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
