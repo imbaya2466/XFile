@@ -326,6 +326,10 @@ typedef struct {
 #define ELF64_ST_TYPE(x)	(((unsigned int) x) & 0xf)
 #define ELF64_ST_INFO(b,t)	(((b) << 4) + ((t) & 0xf))
 
+#define ELF_ST_BIND(x)		((x) >> 4)
+#define ELF_ST_TYPE(x)		(((unsigned int) x) & 0xf)
+#define ELF_ST_INFO(b,t)	(((b) << 4) + ((t) & 0xf))
+
 /* Symbol Binding - ELF32_ST_BIND - st_info */
 #define STB_LOCAL	0		/* Local symbol */
 #define STB_GLOBAL	1		/* Global symbol */

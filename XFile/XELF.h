@@ -13,36 +13,70 @@ typedef struct {
 	Elf_Byte   *sectionName;
 	Elf64_Phdr *programHeader;
 
+	Elf64_Dyn  *dynamicSegment;
+
+	//dynamic中的内容：
+	Elf_Byte *dyn_strtab;
+	Elf64_Sym *dyn_symtab;
+
 } Elf64;
 typedef struct {
+	Elf32_Ehdr *header;
+	Elf32_Shdr *sectionHeader;
+	Elf_Byte   *sectionName;
+	Elf32_Phdr *programHeader;
+	Elf32_Dyn  *dynamicSegment;
 
+	//dynamic中的内容：
+	Elf_Byte *dyn_strtab;
+	Elf32_Sym *dyn_symtab;
 } Elf32;
 
 //ELF文件结构暂时先写64位的，32位的再加，
-//目前共同处理方法预计是自定义俩个结构体专门存储各部分的指针，每个对so的操作都经过本类的方法，
-//由本类负责判断32/64之后去选择用那个结构体去解析，存一个指针指向俩个结构体之一即可，在解析时就定好
 //所有与ELF相关的操作都应该在这里有函数
 class XELF
 {
 private:
 	Elf_Byte *fileCache;
 
-	void doAnalysis();
-
-	Elf64 *elf64;
-	Elf32 *elf32;
-	enum type_ {e64,e32,eunknow}type;
 	
 
+	union elf_ {
+		Elf32 *_32;
+		Elf64 *_64;
+		void *p;
+	} elf;
+	enum type_ {e64,e32,eunknow}type;
+	
+	void doAnalysis();
+	template<typename elfT>
+	void doAnalysis(elfT *elf);
+
+	template<typename elfT>
+	void showHeader(elfT *elf);
+
+	template<typename elfT>
+	void showSectionList(elfT *elf);
+
+	template<typename elfT>
+	void showSegmentList(elfT *elf);
+
+	template<typename elfT>
+	void showdynsym(elfT *elf);
 
 public:
 	XELF(FILE *fd);
 	XELF( void *cache);
 	~XELF();
 
+
+
 	void showHeader();
 	void showSectionList();
 	void showSegmentList();
+	void showdynsym();
+
+
 
 
 

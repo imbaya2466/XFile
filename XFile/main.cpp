@@ -53,7 +53,9 @@ void putHelpELF()
 {
 	cout << "h:header\n"
 		"s:section\n"
-		"q:quit";
+		"p:program header\n"
+		"S:dynsym\n"
+		"q:quit\n";
 }
 void doELF(void * file)
 {
@@ -83,6 +85,10 @@ void doELF(void * file)
 		else if(command=='p')
 		{
 			elf.showSegmentList();
+		}
+		else if (command=='S')
+		{
+			elf.showdynsym();
 		}
 		else
 		{
