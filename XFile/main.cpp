@@ -1,5 +1,5 @@
 #include "XELF.h"
-#include "mian.h"
+#include "main.h"
 #include <iostream>
 using namespace std;
 

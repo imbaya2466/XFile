@@ -116,7 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="elf.h" />
-    <ClInclude Include="mian.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="XELF.h" />
   </ItemGroup>
   <ItemGroup>

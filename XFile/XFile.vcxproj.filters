@@ -13,15 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\XELF">
+      <UniqueIdentifier>{e4d1138c-db3c-48ca-9bcd-6fcf9ffdbf7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\XELF">
+      <UniqueIdentifier>{9052dff9-e21b-4b17-a168-b0dadb74ef2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="elf.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\XELF</Filter>
     </ClInclude>
     <ClInclude Include="XELF.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\XELF</Filter>
     </ClInclude>
-    <ClInclude Include="mian.h">
+    <ClInclude Include="main.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -30,7 +36,7 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="XELF.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\XELF</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
