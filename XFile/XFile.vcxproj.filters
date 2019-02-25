@@ -19,6 +19,12 @@
     <Filter Include="源文件\XELF">
       <UniqueIdentifier>{9052dff9-e21b-4b17-a168-b0dadb74ef2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\XDex">
+      <UniqueIdentifier>{7b5dc1cd-6a02-4425-bb96-4502ed0fafee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Xdex">
+      <UniqueIdentifier>{4a827c43-641f-4ba9-9dff-ae17112c1721}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="elf.h">
@@ -30,6 +36,12 @@
     <ClInclude Include="main.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="XDex.h">
+      <Filter>头文件\XDex</Filter>
+    </ClInclude>
+    <ClInclude Include="DexFile.h">
+      <Filter>头文件\XDex</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -37,6 +49,9 @@
     </ClCompile>
     <ClCompile Include="XELF.cpp">
       <Filter>源文件\XELF</Filter>
+    </ClCompile>
+    <ClCompile Include="XDex.cpp">
+      <Filter>源文件\Xdex</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

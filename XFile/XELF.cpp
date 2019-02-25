@@ -3,6 +3,7 @@
 
 //可以是不经检查的fd
 //构造函数里不要抛出异常？？？？？
+//TODO:使用mmap构造，传入参数应该是linux调用的fd
 XELF::XELF(FILE *fd)
 {
 	try

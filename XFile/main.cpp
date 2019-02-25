@@ -1,11 +1,17 @@
 #include "XELF.h"
 #include "main.h"
 #include <iostream>
+#include "XDex.h"
+
+
+
 using namespace std;
 
 
 int main(int argc, char** argv)
 {
+
+
 	if (argc==1)
 	{
 		cout << "you should input a file!\n";
@@ -42,9 +48,9 @@ int main(int argc, char** argv)
 	{
 		doELF(fileCache);
 	}
-	else
+	else if (strcmp(mag,"dex"))
 	{
-		// ´ýÌí¼ÓÎÄ¼þ
+		doDex(fileCache);
 	}
 
 }
@@ -105,5 +111,14 @@ void doELF(void * file)
 
 
 
+
+}
+
+
+
+
+void doDex(void * file) 
+{
+	XDex dex(file);
 
 }
