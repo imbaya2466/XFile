@@ -10,6 +10,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
+	
 
 
 	if (argc==1)
@@ -101,7 +102,7 @@ void doELF(void * file)
 			putHelpELF();
 		}
 
-
+		cout << endl;
 
 	}
 
@@ -116,9 +117,42 @@ void doELF(void * file)
 
 
 
-
+void putHelpDex()
+{
+	cout << "c:all class\n"
+		"H:help\n"
+		"c[num]:class index of num data\n";
+}
 void doDex(void * file) 
 {
 	XDex dex(file);
+	
 
+	string command;
+	while (true)
+	{
+		cout << ">>";
+		cin >> command;
+		if (command.compare("H")==0)
+		{
+			putHelpDex();
+		}else if (command.compare("c") == 0)
+		{
+			dex.showAllClass();
+		}
+		else if (command.at(0)=='c')
+		{
+			
+			u4 index= stoi(command.substr(1));
+			dex.showClassData(index);
+		}
+		else
+		{
+			putHelpDex();
+		}
+
+
+		cout << endl;
+
+	}
 }

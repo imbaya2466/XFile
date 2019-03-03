@@ -1,13 +1,13 @@
 #pragma once
 
 typedef unsigned char				u1;
-typedef unsigned short int          u2;
+typedef unsigned short			    u2;
 typedef unsigned int				u4;
-typedef unsigned long long           u8;
+typedef unsigned long long             u8;
 typedef signed char					s1;
-typedef signed short int            s2;
+typedef signed short                s2;
 typedef signed int					s4;
-typedef signed long long             s8;
+typedef signed long  long               s8;
 
 
 /*
@@ -311,26 +311,26 @@ struct DexTypeList {
  * debugging. An offset of zero indicates that there are no entries.
  */
 struct DexCode {
-	u2  registersSize;
-	u2  insSize;
-	u2  outsSize;
-	u2  triesSize;
-	u4  debugInfoOff;       /* file offset to debug info stream */
-	u4  insnsSize;          /* size of the insns array, in u2 units */
-	u2  insns[1];
-	/* followed by optional u2 padding */
-	/* followed by try_item[triesSize] */
+	u2  registersSize;		//此段代码使用寄存器数量
+	u2  insSize;			//传入参数的数目
+	u2  outsSize;			//本段代码调用其它method 时需要的参数个数
+	u2  triesSize;			//try_item 数量
+	u4  debugInfoOff;       /* 调试信息 */
+	u4  insnsSize;          /* 指令列表大小 */
+	u2  insns[1];			//字节码的实际数组，可见dalivk字节码大小是2字节为基础的变长字节码。见https://source.android.com/devices/tech/dalvik/instruction-formats.html
+	/* followed by optional u2 padding 使 tries 实现四字节对齐的两字节填充。只有 tries_size 为非零值且 insns_size 是奇数时，此元素才会存在。 */
+	/* followed by try_item[triesSize] 用于表示在代码中捕获异常的位置以及如何对异常进行处理的数组。该数组的元素在范围内不得重叠，且数值地址按照从低到高的顺序排列。只有 tries_size 为非零值时，此元素才会存在。*/
 	/* followed by uleb128 handlersSize */
-	/* followed by catch_handler_item[handlersSize] */
+	/* followed by catch_handler_item[handlersSize] “捕获类型列表和关联处理程序地址*/
 };
 
 /*
  * Direct-mapped "try_item".
  */
 struct DexTry {
-	u4  startAddr;          /* start address, in 16-bit code units */
-	u2  insnCount;          /* instruction count, in 16-bit code units */
-	u2  handlerOff;         /* offset in encoded handler data to handlers */
+	u4  startAddr;          /* 此条目涵盖的代码块的起始地址。该地址是到第一个所涵盖指令开头部分的 16 位代码单元的计数。 */
+	u2  insnCount;          /* 此条目所覆盖的 16 位代码单元的数量。所涵盖（包含）的最后一个代码单元是 start_addr + insn_count - 1。 */
+	u2  handlerOff;         /* 从关联的 encoded_catch_hander_list 开头部分到此条目的 encoded_catch_handler 的偏移量（以字节为单位）。此偏移量必须是到 encoded_catch_handler 开头部分的偏移量。*/
 };
 
 /*
